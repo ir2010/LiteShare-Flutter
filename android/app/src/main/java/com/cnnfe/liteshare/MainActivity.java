@@ -24,16 +24,13 @@ public class MainActivity extends FlutterActivity
                         (call, result) -> {
                             if (call.method.equals("send"))
                             {
+
                                 result.success("sent");
-                                //Toast.makeText(this, "Sent", Toast.LENGTH_LONG);
-                                //TODO: Define send
                             }
 
                             if (call.method.equals("receive"))
                             {
                                 result.success("received");
-                                //Toast.makeText(this, "Received", Toast.LENGTH_LONG);
-                                //TODO: Define send
                             }
                         }
                 );
