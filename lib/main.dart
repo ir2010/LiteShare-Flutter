@@ -9,7 +9,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,41 +37,34 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              icon: Icon(Icons.send),
-              color: Color(kcolorPrimary),
-              tooltip: "Send",
-              onPressed: ()
-              {
-                Navigator.pushNamed(context, '/file');
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.receipt),
-              color: Color(kcolorPrimary),
-              tooltip: "Receive",
-              onPressed: ()
-              {
-                //contactJava("receive");
-              },
-            )
-          ],
+        appBar: AppBar(
+          title: Text("Get Set Share.."),
         ),
-
-      )
-    );
+        body: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                icon: Icon(Icons.send),
+                color: Color(kcolorPrimary),
+                tooltip: "Send",
+                onPressed: () {
+                  Navigator.pushNamed(context, '/file');
+                },
+              ),
+              IconButton(
+                icon: Icon(Icons.receipt),
+                color: Color(kcolorPrimary),
+                tooltip: "Receive",
+                onPressed: () {
+                  //contactJava("receive");
+                },
+              )
+            ],
+          ),
+        ));
   }
 }

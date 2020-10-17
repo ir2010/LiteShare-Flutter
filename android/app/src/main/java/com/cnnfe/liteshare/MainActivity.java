@@ -24,7 +24,6 @@ public class MainActivity extends FlutterActivity
                         (call, result) -> {
                             if (call.method.equals("send"))
                             {
-
                                 result.success("sent");
                             }
 
