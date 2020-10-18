@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'constants.dart';
+import 'filescreen.dart';
+import 'connectscreen.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'LiteShare',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => MyHomePage(),
+        '/file': (context) => FileScreen(),
+        '/connect': (context) => ConnectScreen(),
+      },
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Get Set Share...'),
     );
   }
 }
@@ -31,53 +37,34 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static const platform = const MethodChannel('com.cnnfe.liteshare/liteshare');
-  Future<void> contactJava(String methodName) async
-  {
-    String value;
-    try{
-      value = await platform.invokeMethod(methodName);
-    }catch(e)
-    {
-      print(e);
-      print("kuch");
-    }
-    print("v="+value);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              icon: Icon(Icons.send),
-              color: Color(kcolorPrimary),
-              tooltip: "Send",
-              onPressed: ()
-              {
-                contactJava("send");
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.receipt),
-              color: Color(kcolorPrimary),
-              tooltip: "Receive",
-              onPressed: ()
-              {
-                contactJava("receive");
-              },
-            )
-          ],
+        appBar: AppBar(
+          title: Text("Get Set Share.."),
         ),
-
-      )
-    );
+        body: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                icon: Icon(Icons.send),
+                color: Color(kcolorPrimary),
+                tooltip: "Send",
+                onPressed: () {
+                  Navigator.pushNamed(context, '/file');
+                },
+              ),
+              IconButton(
+                icon: Icon(Icons.receipt),
+                color: Color(kcolorPrimary),
+                tooltip: "Receive",
+                onPressed: () {
+                  //contactJava("receive");
+                },
+              )
+            ],
+          ),
+        ));
   }
 }
